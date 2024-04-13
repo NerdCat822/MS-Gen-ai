@@ -46,7 +46,7 @@ def flag(text):
 
     final_prompt = ChatPromptTemplate.from_messages(
         [
-            ("system", "assistant는 나쁜말과 착한말을 구분 가능하다. '{input}' 이 문장이 나쁜 말이라면 False, 착한 말이면 True 를 출력해줘"),
+            ("system", "assistant는 나쁜말과 착한말을 구분 가능하다. '{input}' 이 문장이 나쁜 말이라면 false, 착한 말이면 true 를 출력해줘"),
             example_prompt,
             ("human", "{input}"),
         ]
