@@ -11,7 +11,18 @@ from Check_list_Few_shot import *
 from Bad2good_request import *
 from why_bad_request import *
 
+from fastapi.middleware.cors import CORSMiddleware
+
 app = FastAPI()
+
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:3000"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 class InputText(BaseModel):
     text: str
@@ -28,10 +39,10 @@ def post_check_list(input_text: InputText):
 
 @app.post("/bad2good")
 def post_bad2good(input_text: InputText):
-    bad2good = bad2good(input_text.text)
-    return {"bad2good": bad2good}
+    response = bad2good(input_text.text)
+    return {"bad2good": response}
 
 @app.post("/why_bad_request")
 def post_bad_request(input_text: InputText):
-    bad_request = RAG_bad_request(input_text.text)
+    bad_request = RAG_bad_request()
     return {"bad-request": bad_request}
