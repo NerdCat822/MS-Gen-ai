@@ -4,6 +4,7 @@ from langchain.prompts.few_shot import FewShotPromptTemplate
 from langchain.schema import BaseOutputParser
 from langchain.callbacks import StreamingStdOutCallbackHandler
 from langchain.prompts.few_shot import FewShotChatMessagePromptTemplate
+from langchain.schema import StrOutputParser
 
 import os
 from dotenv import load_dotenv
@@ -118,6 +119,6 @@ def fewshot_checklist(text):
         ]
     )
 
-    chain = final_prompt | chat
+    chain = final_prompt | chat | StrOutputParser()
 
     return chain.invoke({"input": text})
