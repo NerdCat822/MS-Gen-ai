@@ -10,6 +10,7 @@ from inference_finetune import *
 from Check_list_Few_shot import *
 from Bad2good_request import *
 from why_bad_request import *
+from valid_flag import *
 
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -46,3 +47,8 @@ def post_bad2good(input_text: InputText):
 def post_bad_request(input_text: InputText):
     bad_request = RAG_bad_request()
     return {"bad-request": bad_request}
+
+@app.post("/valid_flag")
+def post_valid_flag(input_text: InputText):
+    flag_value = flag(input_text.text)
+    return {"valid-flag": flag_value}
