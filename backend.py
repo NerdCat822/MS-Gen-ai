@@ -51,4 +51,4 @@ def post_bad_request(input_text: InputText):
 @app.post("/valid_flag")
 def post_valid_flag(input_text: InputText):
     flag_value = flag(input_text.text)
-    return {"valid-flag": flag_value}
+    return {"validFlag": flag_value}
