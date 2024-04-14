@@ -37,6 +37,6 @@ def RAG_bad(bad_text):
     llm, retrieval_qa_chat_prompt)
     retrieval_chain = create_retrieval_chain(retriever, combine_docs_chain)
 
-    text = retrieval_chain.invoke({"input": bad_text + "앞의 악성민원과 관련해 부적절한 단어들을 문자열 배열로 반환해줘. 글자를 수정하지말고."})
+    text = retrieval_chain.invoke({"input": bad_text + "앞의 악성민원과 관련해 부적절한 단어들을 , 로 구분 지어서 문자열로 반환해줘. 글자를 수정하지말고."})
 
     return text['answer']
